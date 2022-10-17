@@ -58,7 +58,7 @@ class Request extends HttpRequest implements RequestInterface
      */
     protected function getFieldFromBody($key)
     {
-        $rpc = JsonRpc\json_decode((string) $this->getBody(), true);
+        $rpc = json_decode((string) $this->getBody(), true);
 
         return isset($rpc[$key]) ? $rpc[$key] : null;
     }
