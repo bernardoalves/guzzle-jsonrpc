@@ -203,7 +203,7 @@ class Client implements ClientInterface
     protected function getBatchRequestOptions(array $requests)
     {
         return array_map(function (RequestInterface $request) {
-            return JsonRpc\json_decode((string) $request->getBody());
+            return json_decode((string) $request->getBody());
         }, $requests);
     }
 
@@ -214,7 +214,7 @@ class Client implements ClientInterface
      */
     protected function getBatchResponses(ResponseInterface $response)
     {
-        $results = JsonRpc\json_decode((string) $response->getBody(), true);
+        $results = json_decode((string) $response->getBody(), true);
 
         return array_map(function (array $result) use ($response) {
             return $this->messageFactory->createResponse(
